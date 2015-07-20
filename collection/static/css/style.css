@@ -1,7 +1,8 @@
 body {
-    background-color: blue;
+    background-color: white;
 }
 
 h1 {
-     background-image: url(../images/poke1.jpeg);
+     background-color: blue;
+     color: white;
  }
