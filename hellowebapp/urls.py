@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^hikes/(?P<slug>[-\w]+)/$', 'collection.views.hike_detail', name='hike_detail'),
     url(r'^hikes/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_hike', name='edit_hike'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^admin/', include(admin.site.urls))
 )
