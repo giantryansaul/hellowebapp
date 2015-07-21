@@ -1,0 +1,8 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    {{ hike.name }} - {{ block.super }}
+{% endblock %}
+{% block content %}
+    <h1>{{ hike.name }}</h1>
+    <p>{{ hike.description }}</p>
+{% endblock %}

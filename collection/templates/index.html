@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
-    <h1>Hello World!</h1>
-    <p>{% if number %}Number Exists!{% endif %}</p>
+    {% for hike in hikes %}
+        <h2>
+            <a href="{% url 'hike_detail' slug=hike.slug %}">
+                {{ hike.name }}
+            </a>
+        </h2>
+        <p>{{ hike.description }}</p>
+    {% endfor %}
 {% endblock %}
