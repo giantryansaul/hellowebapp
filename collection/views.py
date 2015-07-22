@@ -34,7 +34,10 @@ def edit_hike(request, slug):
     else:
         form = form_class(instance=hike)
 
-    return render(request, 'hikes/edit_hike.html', {'hike': hike, 'form': form, })
+    return render(request, 'hikes/edit_hike.html', {
+        'hike': hike,
+        'form': form,
+    })
 
 
 def create_hike(request):
@@ -61,5 +64,18 @@ def create_hike(request):
     else:
         form = form_class()
 
-    return render(request, 'hikes/create_hike.html', { 'form': form, },
-                  context_instance=RequestContext(request))
+    return render(request, 'hikes/create_hike.html', {
+        'form': form,
+    }, context_instance=RequestContext(request))
+
+
+def browse_by_name(request, initial=None):
+    if initial:
+        hikes = Hike.objects.filter(name__istartswith=initial).order_by('name')
+    else:
+        hikes = Hike.objects.all().order_by('name')
+
+    return render(request, 'search/search.html', {
+        'hikes': hikes,
+        'initial': initial
+    })
