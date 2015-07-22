@@ -24,7 +24,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO: change this before launching app!
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
