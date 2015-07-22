@@ -5,5 +5,11 @@
 {% block content %}
     <h1>{{ hike.name }}</h1>
     <p>{{ hike.description }}</p>
-    <a href="{% url 'edit_hike' slug=hike.slug %}">Edit Hike</a>
+    {% if user == hike.user %}
+        <p>
+             <a href="{% url 'edit_hike' slug=hike.slug %}">
+                 Edit Hike
+             </a>
+        </p>
+    {% endif %}
 {% endblock %}

@@ -7,6 +7,7 @@ from django.contrib.auth.views import (
     password_reset_confirm,
     password_reset_complete
 )
+from collection.backends import MyRegistrationView
 
 urlpatterns = patterns('',
                        url(r'^$', 'collection.views.index',
@@ -31,6 +32,10 @@ urlpatterns = patterns('',
                        url(r'^account/password/done/$', password_reset_complete,
                            {'template_name':'registration/password_reset_complete.html'},
                            name="password_reset_complete"),
+                       url(r'^accounts/register/$', MyRegistrationView.as_view(),
+                           name="registration_register"),
+                       url(r'^accounts/create_hike/$', 'collection.views.create_hike',
+                           name="registration_create_hike"),
                        url(r'^accounts/', include('registration.backends.simple.urls')),
                        url(r'^admin/', include(admin.site.urls))
 )
