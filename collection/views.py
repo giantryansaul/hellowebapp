@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from collection.forms import HikeForm
-from collection.models import Hike
+from collection.forms import HikeForm, ProfileForm
+from collection.models import Hike, Profile
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -10,6 +10,63 @@ from django.http import Http404
 def index(request):
     hikes = Hike.objects.all().order_by('name')
     return render(request, 'index.html', {'hikes': hikes}, )
+
+
+def profile_detail(request, slug):
+    profile = Profile.objects.get(slug=slug)
+    return render(request, 'profile/profile_detail.html', {'profile': profile, })
+
+
+@login_required
+def edit_profile(request, slug):
+    profile = Profile.objects.get(slug=slug)
+
+    if profile.user != request.user:
+        raise Http404
+
+    form_class = ProfileForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_detail', slug=profile.slug)
+    else:
+        form = form_class(instance=profile)
+
+    return render(request, 'profile/edit_profile.html', {
+        'profile': profile,
+        'form': form,
+    })
+
+
+def create_profile(request):
+    profile = request.profile
+    form_class = ProfileForm
+
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+
+            slug = slugify(name)
+
+            profile = Profile.objects.create(
+                name=name,
+                description=description,
+                slug=slug,
+                user=user
+            )
+
+        return redirect('profile_detail', slug=profile.slug)
+
+    else:
+        form = form_class()
+
+    return render(request, 'profile/create_profile.html', {
+        'form': form,
+    }, context_instance=RequestContext(request))
 
 
 def hike_detail(request, slug):

@@ -24,6 +24,8 @@ urlpatterns = patterns('',
                            name='hike_detail'),
                        url(r'^hikes/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_hike',
                            name='edit_hike'),
+                       url(r'^accounts/create_hike/$', 'collection.views.create_hike',
+                           name="create_hike"),
 
                        # Browse Flow
                        url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
@@ -47,11 +49,19 @@ urlpatterns = patterns('',
                            name="password_reset_complete"),
                        url(r'^accounts/register/$', MyRegistrationView.as_view(),
                            name="registration_register"),
-                       url(r'^accounts/create_hike/$', 'collection.views.create_hike',
-                           name="registration_create_hike"),
+                       #url(r'^accounts/create_hike/$', 'collection.views.create_hike',
+                       #    name="registration_create_hike"),
+                       url(r'^accounts/create_profile/$', 'collection.views.create_profile',
+                          name="registration_create_profile"),
 
                        # Accounts
                        url(r'^accounts/', include('registration.backends.simple.urls')),
+
+                       # Profiles
+                       url(r'^profiles/(?P<slug>[-\w]+)/$', 'collection.views.profile_detail',
+                           name='profile_detail'),
+                       url(r'^profiles/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_hike',
+                           name='edit_profile'),
 
                        # Admin
                        url(r'^admin/', include(admin.site.urls))

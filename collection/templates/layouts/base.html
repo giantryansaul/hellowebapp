@@ -4,7 +4,7 @@
     <head>
         <title>
             {% block title %}
-                My Hello Web App Project
+                Hike Explorer
             {% endblock %}
         </title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-            <h1>Hello Web App</h1>
+            <h1>Hike Explorer!</h1>
             <nav>
                 <ul>
                     <li>
@@ -30,6 +30,9 @@
                     {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'auth_logout' %}">Logout</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'create_hike' %}">Create Hike</a>
                     </li>
                     {% else %}
                     <li>
