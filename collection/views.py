@@ -9,12 +9,12 @@ from django.http import Http404
 # Create your views here.
 def index(request):
     hikes = Hike.objects.all().order_by('name')
-    return render(request, 'index.html', {'hikes': hikes}, )
+    return render(request, 'index.html', {'hikes': hikes})
 
 
 def profile_detail(request, slug):
     profile = Profile.objects.get(slug=slug)
-    return render(request, 'profile/profile_detail.html', {'profile': profile, })
+    return render(request, 'profiles/profile_detail.html', {'profile': profile, })
 
 
 @login_required
@@ -34,14 +34,14 @@ def edit_profile(request, slug):
     else:
         form = form_class(instance=profile)
 
-    return render(request, 'profile/edit_profile.html', {
+    return render(request, 'profiles/edit_profile.html', {
         'profile': profile,
         'form': form,
     })
 
 
 def create_profile(request):
-    profile = request.profile
+    user = request.user
     form_class = ProfileForm
 
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def create_profile(request):
     else:
         form = form_class()
 
-    return render(request, 'profile/create_profile.html', {
+    return render(request, 'profiles/create_profile.html', {
         'form': form,
     }, context_instance=RequestContext(request))
 

@@ -60,7 +60,7 @@ urlpatterns = patterns('',
                        # Profiles
                        url(r'^profiles/(?P<slug>[-\w]+)/$', 'collection.views.profile_detail',
                            name='profile_detail'),
-                       url(r'^profiles/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_hike',
+                       url(r'^profiles/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_profile',
                            name='edit_profile'),
 
                        # Admin
