@@ -10,4 +10,8 @@ class HikeForm(ModelForm):
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ('name', 'description')
+        fields = (
+            'first_name',
+            'last_name',
+            'bio'
+        )
