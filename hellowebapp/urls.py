@@ -58,6 +58,8 @@ urlpatterns = patterns('',
                        url(r'^accounts/', include('registration.backends.simple.urls')),
 
                        # Profiles
+                       url(r'^accounts/profile/$', 'collection.views.user_profile',
+                           name='user_profile'),
                        url(r'^profiles/(?P<slug>[-\w]+)/$', 'collection.views.profile_detail',
                            name='profile_detail'),
                        url(r'^profiles/(?P<slug>[-\w]+)/edit/$', 'collection.views.edit_profile',

@@ -12,6 +12,11 @@ def index(request):
     return render(request, 'index.html', {'hikes': hikes})
 
 
+def user_profile(request):
+    profile = request.user.profile
+    return render(request, 'profiles/profile_detail.html', {'profile': profile, })
+
+
 def profile_detail(request, slug):
     profile = Profile.objects.get(slug=slug)
     return render(request, 'profiles/profile_detail.html', {'profile': profile, })
