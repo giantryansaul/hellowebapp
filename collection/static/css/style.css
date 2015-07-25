@@ -1,8 +1,5 @@
 body {
     background-color: white;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
-
-h1 {
-     background-color: blue;
-     color: white;
- }
