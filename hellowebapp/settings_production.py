@@ -9,9 +9,5 @@ ALLOWED_HOSTS = ['*']
 
 DEBUG = False
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'collection/static'),
-)
-
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
