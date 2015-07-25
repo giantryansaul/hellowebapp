@@ -50,13 +50,14 @@ def create_profile(request):
     form_class = ProfileForm
 
     if request.method == 'POST':
+        profile = None
         form = form_class(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
-            description = form.cleaned_data['bio']
+            bio = form.cleaned_data['bio']
 
-            slug = slugify(name)
+            slug = slugify("{0} {1}".format(first_name, last_name))
 
             profile = Profile.objects.create(
                 first_name=first_name,
