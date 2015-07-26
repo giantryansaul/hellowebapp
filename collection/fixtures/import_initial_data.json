@@ -1,0 +1,29 @@
+[
+	{
+		"model": "collection.hike",
+		"pk": 1,
+		"fields": {
+            "name": "Hike 1",
+            "description": "The description of hike 1",
+            "slug": "hike-1"
+            }
+	},
+	{
+		"model": "collection.hike",
+		"pk": 2,
+		"fields": {
+            "name": "Some hike to nowehere",
+            "description": "The description of hike 2",
+            "slug": "hike-2"
+            }
+	},
+	{
+		"model": "collection.hike",
+		"pk": 3,
+		"fields": {
+            "name": "Hike that hasnt been done before",
+            "description": "The description of hike 3",
+            "slug": "hike-3"
+            }
+	}
+]
