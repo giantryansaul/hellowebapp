@@ -3,3 +3,16 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+.jumbotron {
+    background-image: url(../images/mt_hood_closeup_peak.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top -100px;
+
+    color: white;
+}
+
+h1 {
+    color: #0099FF
+}

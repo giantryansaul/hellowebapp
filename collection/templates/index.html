@@ -1,12 +1,35 @@
 {% extends 'layouts/base.html' %}
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
-    {% for hike in hikes %}
-        <h2>
-            <a href="{% url 'hike_detail' slug=hike.slug %}">
-                {{ hike.name }}
-            </a>
-        </h2>
-        <p>{{ hike.description }}</p>
-    {% endfor %}
+
+        <!-- Main jumbotron -->
+            <div class="jumbotron">
+              <div class="container">
+                <h1>Welcome to Hike Explorer!</h1>
+                <p>The best destination for hikes in the Pacific Northwest</p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+              </div>
+            </div> <!-- end jumbotron -->
+
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-4">
+              <h2>{{ latest.0.name }}</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="{% url 'hike_detail' slug=latest.0.slug %}" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+              <h2>{{ latest.1.name }}</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="{% url 'hike_detail' slug=latest.1.slug %}" role="button">View details &raquo;</a></p>
+           </div>
+            <div class="col-md-4">
+              <h2>{{ latest.2.name }}</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. </p>
+              <p><a class="btn btn-default" href="{% url 'hike_detail' slug=latest.2.slug %}" role="button">View details &raquo;</a></p>
+            </div>
+          </div>
+       </div>
+
 {% endblock %}

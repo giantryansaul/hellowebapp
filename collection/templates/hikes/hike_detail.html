@@ -4,8 +4,6 @@
 {% endblock %}
 {% block content %}
     <h1>{{ hike.name }}</h1>
-    <p>By {{ hike.user }}</p>
-    <p>{{ hike.description }}</p>
     {% if user == hike.user %}
         <p>
              <a href="{% url 'edit_hike' slug=hike.slug %}">
@@ -13,4 +11,7 @@
              </a>
         </p>
     {% endif %}
+    <p>By {{ hike.user }}</p>
+    <p>{{ hike.description }}</p>
+
 {% endblock %}

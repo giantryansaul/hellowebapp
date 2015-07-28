@@ -9,7 +9,8 @@ from django.http import Http404
 # Create your views here.
 def index(request):
     hikes = Hike.objects.all().order_by('name')
-    return render(request, 'index.html', {'hikes': hikes})
+    latest_hikes = Hike.objects.all().order_by('-id')[:3][::-1]
+    return render(request, 'index.html', {'hikes': hikes, 'latest': latest_hikes})
 
 
 def user_profile(request):
