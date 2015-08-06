@@ -125,7 +125,7 @@ def create_hike(request):
                 user=user
             )
 
-        return redirect('hike_detail', slug=hike.slug)
+            return redirect('hike_detail', slug=hike.slug)
 
     else:
         form = form_class()
