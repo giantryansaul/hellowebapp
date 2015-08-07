@@ -5,7 +5,11 @@ from collection.models import Hike, Profile
 class HikeForm(ModelForm):
     class Meta:
         model = Hike
-        fields = ('name', 'description')
+        fields = (
+            'name',
+            'description',
+            'region'
+        )
 
 class ProfileForm(ModelForm):
     class Meta:

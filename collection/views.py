@@ -115,6 +115,7 @@ def create_hike(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
+            region = form.cleaned_data['region']
 
             slug = slugify(name)
 
@@ -122,7 +123,8 @@ def create_hike(request):
                 name=name,
                 description=description,
                 slug=slug,
-                user=user
+                user=user,
+                region=region
             )
 
             return redirect('hike_detail', slug=hike.slug)

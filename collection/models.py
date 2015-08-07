@@ -6,6 +6,7 @@ class Hike (models.Model):
     description = models.TextField()
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, blank=True, null=True)
+    region = models.CharField(max_length=255)
 
 class Profile (models.Model):
     first_name = models.CharField(max_length=255)

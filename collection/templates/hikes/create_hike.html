@@ -6,10 +6,10 @@
     {% csrf_token %}
     <fieldset>
 
-    <!-- Form Name -->
+    <!-- Title -->
     <legend>Create Hike</legend>
 
-    <!-- Text input-->
+    <!-- Name-->
     <div class="form-group">
       <label class="col-md-1 control-label" for="name">Name</label>
       <div class="col-md-6">
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <!-- Textarea -->
+    <!-- Description -->
     <div class="form-group">
       <label class="col-md-1 control-label" for="description">Description</label>
       <div class="col-md-6">
@@ -26,7 +26,16 @@
       </div>
     </div>
 
-    <!-- Button (Double) -->
+   <!-- Region -->
+   <div class="form-group">
+      <label class="col-md-1 control-label" for="region">Region</label>
+      <div class="col-md-6">
+      <input id="region" name="region" type="text" placeholder="" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <!-- Submit -->
     <div class="form-group">
       <label class="col-md-1 control-label" for="select"></label>
       <div class="col-md-6">
